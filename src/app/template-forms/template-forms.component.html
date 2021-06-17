@@ -1,0 +1,92 @@
+<div class="container mt-2">
+  <h1 class="mb-4">Sign In using template driven forms</h1>
+  <form #signInForm="ngForm" (ngSubmit)="logInUser(signInForm)">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email address</label>
+      <input
+        type="email"
+        class="form-control"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+        placeholder="Enter email"
+        name="emailAddress"
+        ngModel
+        required
+        #emailAddress="ngModel"
+      />
+      <small
+        id="emailHelp"
+        class="form-text text-muted"
+        *ngIf="emailAddress.touched && !emailAddress.valid"
+        >Email address required</small
+      >
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="exampleInputPassword1"
+        placeholder="Password"
+        name="password"
+        ngModel
+        required
+        #password="ngModel"
+      />
+      <small
+        id="emailHelp"
+        class="form-text text-muted"
+        *ngIf="password.touched && !password.valid"
+        >Password required</small
+      >
+    </div>
+    <div class="form-group form-check">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="exampleCheck1"
+        name="terms"
+        ngModel
+        required
+        #terms="ngModel"
+      />
+      <label class="form-check-label" for="exampleCheck1">Agree to Terms</label>
+      <small
+        id="emailHelp"
+        class="form-text text-muted"
+        *ngIf="terms.touched && !terms.valid"
+        >Need to Agree To Terms</small
+      >
+    </div>
+    <div class="form-group">
+      <label for="city">Select City</label>
+      <select
+        name="city"
+        id=""
+        class="form-control"
+        ngModel
+        required
+        #city="ngModel"
+      >
+        <option value="Los Angeles">Los Angeles</option>
+        <option value="Tokyo">Tokyo</option>
+        <option value="bejing">Bejing</option>
+        <option value="Dubrovnik">Dubrovnik</option>
+        <option value="Dushanbe">Dushanbe</option>
+      </select>
+      <small
+        id="emailHelp"
+        class="form-text text-muted"
+        *ngIf="city.touched && !city.valid"
+        >city required</small
+      >
+    </div>
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="!signInForm.valid"
+    >
+      Submit
+    </button>
+  </form>
+</div>
